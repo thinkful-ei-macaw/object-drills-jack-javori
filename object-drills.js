@@ -22,3 +22,24 @@ for(const key in objectFive) {
   console.log(`Property: ${key} Value: ${objectFive[key]}`);
 }
 
+
+
+const food = {
+  meals : ['breakfast', 'second breakfast', 'elevenses', 'lunch', 'afternoon tea',
+'dinner', 'supper'],
+};
+
+console.log(food.meals[5]);
+
+function Person(name, jobtitle) {
+  this.name = name;
+  this.jobtitle = jobtitle;
+}
+
+const newArray = [new Person('Dog', 'Police'), new Person('Fish', 'Doctor'),
+new Person('Cat', 'Teacher'), new Person('Squirrel', 'Firefighter'),
+new Person('Rabbit', 'Banker')];
+
+for(let i in newArray) {
+  console.log(newArray[i]);
+}
