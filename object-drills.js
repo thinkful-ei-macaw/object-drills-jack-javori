@@ -1,44 +1,8 @@
 'use strict';
 
-const HEROES = [
-  { id: 1, name: 'Captain America', squad: 'Avengers' },
-  { id: 2, name: 'Iron Man', squad: 'Avengers' },
-  { id: 3, name: 'Spiderman', squad: 'Avengers' },
-  { id: 4, name: 'Superman', squad: 'Justice League' },
-  { id: 5, name: 'Wonder Woman', squad: 'Justice League' },
-  { id: 6, name: 'Aquaman', squad: 'Justice League' },
-  { id: 7, name: 'Hulk', squad: 'Avengers' },
-];
-
-function findOne(arr, query) {
-  let result = arr.find(e => e.id === query.id || e.name === query.name || e.squad === query.squad);
-  if(result === undefined) {
-    return null;
-  }
-  else return result;
-}
-
-console.log(findOne(HEROES, { id: 1 }));
-
-const Database = {
-  store: {
-    heroes: [
-      { id: 1, name: 'Captain America', squad: 'Avengers' },
-      { id: 2, name: 'Iron Man', squad: 'Avengers' },
-      { id: 3, name: 'Spiderman', squad: 'Avengers' },
-      { id: 4, name: 'Superman', squad: 'Justice League' },
-      { id: 5, name: 'Wonder Woman', squad: 'Justice League' },
-      { id: 6, name: 'Aquaman', squad: 'Justice League' },
-      { id: 7, name: 'Hulk', squad: 'Avengers' },
-    ]
-  },
-  findOne: function(id) {
-    return this.store.heroes.find(e => e.id === id.id);
-  }
-};
-
-console.log(Database.findOne({ id: 2 }));
-
+/******************* */
+/* Problem 1 */
+/******************* */
 
 const loaf = {
   flour: 300,
@@ -49,6 +13,10 @@ const loaf = {
 };
 
 console.log(loaf.hydration());
+
+/******************* */
+/* Problem 2 */
+/******************* */
 
 const objectFive = {
   foo: 'foo',
@@ -62,7 +30,9 @@ for(const key in objectFive) {
   console.log(`Property: ${key} Value: ${objectFive[key]}`);
 }
 
-
+/******************* */
+/* Problem 3 */
+/******************* */
 
 const food = {
   meals : ['breakfast', 'second breakfast', 'elevenses', 'lunch', 'afternoon tea',
@@ -70,6 +40,10 @@ const food = {
 };
 
 console.log(food.meals[5]);
+
+/******************* */
+/* Problems 4 & 5 */
+/******************* */
 
 function Person(name, jobTitle, boss) {
   this.name = name;
@@ -90,6 +64,10 @@ newArray.forEach(employee => {
     console.log(`${employee.jobTitle} ${employee.name} reports to ${employee.boss}`) :
     console.log(`${employee.jobTitle} ${employee.name} doesn't report to anybody`);
 });
+
+/******************* */
+/* Problem 6 */
+/******************* */
 
 function decode(string) {
     
@@ -112,6 +90,10 @@ let encrypted = 'craft block argon meter bells brown croon droop';
 
 console.log(decodeWords(encrypted));
 
+/******************* */
+/* Problem 7 */
+/******************* */
+
 function Character(name, nickname, race, origin, attack, defense, weapon) {
   this.name = name;
   this.nickname = nickname;
@@ -125,23 +107,25 @@ function Character(name, nickname, race, origin, attack, defense, weapon) {
   };
   this.evaluateFight = function(character) {
     let x = character.defense - this.damage;
-    let y = character.damage - this.defense;
+    let y = this.defense - character.damage;
     if(this.defense > character.attack) {
       return `${character} took no damage.`;
     }
     else {
-      return `Your opponent takes ${x} damage and recieve ${y} damage`;
+      return `Your opponent takes ${x} damage and you recieve ${y} damage`;
     
     }
   };
 }
 
-const characterArray = [new Character('Gandalf the White', 'gandalf', 
-  'Wizard', 'Middle Earth', 10, 6, 'Wizard Staff'), new Character('Bilbo Baggins', 'bilbo', 'Hobbit',
-  'The Shire', 2, 1, 'Ring'), new Character('Frodo Baggins', 'frodo', 'Hobbit',
-  'The Shire', 3, 2, 'String and Barrow Blade'), new Character('Aragorn son of Arathorn', 'aragorn', 'Man', 
-  'Dunnedain', 6, 8, 'Anduril'), new Character('Legolas', 'legolas', 'Elf', 'Woodland Realm', 8, 5, 'Bow and Arrow'), 
-new Character('Arwen Undomiel', 'arwen', 'Half-Elf', 'Rivendell', 8, 2, 'Hadhafang')];
+const characterArray = [
+  new Character('Gandalf the White', 'gandalf', 'Wizard', 'Middle Earth', 10, 6, 'Wizard Staff'), 
+  new Character('Bilbo Baggins', 'bilbo', 'Hobbit', 'The Shire', 2, 1, 'Ring'), 
+  new Character('Frodo Baggins', 'frodo', 'Hobbit', 'The Shire', 3, 2, 'String and Barrow Blade'), 
+  new Character('Aragorn son of Arathorn', 'aragorn', 'Man', 'Dunnedain', 6, 8, 'Anduril'), 
+  new Character('Legolas', 'legolas', 'Elf', 'Woodland Realm', 8, 5, 'Bow and Arrow'), 
+  new Character('Arwen Undomiel', 'arwen', 'Half-Elf', 'Rivendell', 8, 2, 'Hadhafang')
+];
 
 characterArray.find(e => e.nickname === 'aragorn').describe(); 
 
@@ -150,3 +134,56 @@ const hobbits = characterArray.filter(e => e.race === 'Hobbit');
 const attackOverFive = characterArray.filter(e => e.attack > 5);
 
 console.log(attackOverFive);
+
+/******************* */
+/* Bonus Problem I */
+/******************* */
+
+const HEROES = [
+  { id: 1, name: 'Captain America', squad: 'Avengers' },
+  { id: 2, name: 'Iron Man', squad: 'Avengers' },
+  { id: 3, name: 'Spiderman', squad: 'Avengers' },
+  { id: 4, name: 'Superman', squad: 'Justice League' },
+  { id: 5, name: 'Wonder Woman', squad: 'Justice League' },
+  { id: 6, name: 'Aquaman', squad: 'Justice League' },
+  { id: 7, name: 'Hulk', squad: 'Avengers' },
+];
+
+function findOne(arr, query) {
+  const queryKeys = Object.keys(query);
+  let searchResult = arr.find(obj => queryKeys.every(e => query[e] === obj[e]));
+  return searchResult === undefined ? null : searchResult;
+}
+
+findOne(HEROES, { id: 1 });
+
+findOne(HEROES, { id: 10 });
+
+findOne(HEROES, { id: 2, name: 'Aquaman' });
+
+findOne(HEROES, { id: 5, squad: 'Justice League' });
+
+findOne(HEROES, { squad: 'Justice League' });
+
+/******************* */
+/* Bonus Problem II */
+/******************* */
+
+const Database = {
+  store: {
+    heroes: [
+      { id: 1, name: 'Captain America', squad: 'Avengers' },
+      { id: 2, name: 'Iron Man', squad: 'Avengers' },
+      { id: 3, name: 'Spiderman', squad: 'Avengers' },
+      { id: 4, name: 'Superman', squad: 'Justice League' },
+      { id: 5, name: 'Wonder Woman', squad: 'Justice League' },
+      { id: 6, name: 'Aquaman', squad: 'Justice League' },
+      { id: 7, name: 'Hulk', squad: 'Avengers' },
+    ]
+  },
+  findOne: function(id) {
+    return this.store.heroes.find(e => e.id === id.id);
+  }
+};
+
+console.log(Database.findOne({ id: 2 }));
